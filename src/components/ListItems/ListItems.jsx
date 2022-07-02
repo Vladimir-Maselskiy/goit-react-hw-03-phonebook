@@ -5,14 +5,17 @@ export default function ListItems(props) {
   const { contacts, onDelete } = props;
   return (
     <>
-      {contacts.map(contact => (
-        <ListItem key={contact.id}>
-          {contact.name} {contact.number}
-          <button id={contact.id} onClick={() => onDelete(contact.id)}>
-            Delete
-          </button>
-        </ListItem>
-      ))}
+      {contacts.map(contact => {
+        const { name, number, id } = contact;
+        return (
+          <ListItem key={contact.id}>
+            {name} {number}
+            <button id={id} onClick={() => onDelete(id)}>
+              Delete
+            </button>
+          </ListItem>
+        );
+      })}
     </>
   );
 }
